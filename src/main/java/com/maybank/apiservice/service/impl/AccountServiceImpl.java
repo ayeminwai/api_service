@@ -38,6 +38,6 @@ public class AccountServiceImpl implements AccountService {
     @Transactional(readOnly = true)
     public Account getAccount(Long id) {
         return accountRepository.findById(id)
-                .orElseThrow(() -> new PaymentException(AppStatus.APP_ERROR.getCode(),"Account not found"));
+                .orElseThrow(() -> new PaymentException(AppStatus.APP_ERROR.getCode(), "Account not found"));
     }
 }

@@ -2,6 +2,7 @@ package com.maybank.apiservice.controller;
 
 import com.maybank.apiservice.dto.KycUserResponse;
 import com.maybank.apiservice.dto.ResponseDTO;
+import com.maybank.apiservice.dto.UpdateUserRequest;
 import com.maybank.apiservice.dto.UserRequest;
 import com.maybank.apiservice.model.User;
 import com.maybank.apiservice.service.UserService;
@@ -20,6 +21,11 @@ public class UserController {
     @PostMapping
     public ResponseEntity<ResponseDTO<User>> createUser(@Valid @RequestBody UserRequest request) {
         return ResponseUtil.success(userService.createUser(request));
+    }
+
+    @PutMapping
+    public ResponseEntity<ResponseDTO<User>> updateUser(@Valid @RequestBody UpdateUserRequest request) {
+        return ResponseUtil.success(userService.updateUser(request));
     }
 
     @GetMapping("/{id}")

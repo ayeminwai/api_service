@@ -1,5 +1,6 @@
 package com.maybank.apiservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -25,5 +26,6 @@ public class User {
     @Column(name = "created_at")
     private Instant createdAt = Instant.now();
 
+    @JsonIgnore
     private Boolean deleted = false;
 }
