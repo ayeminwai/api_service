@@ -1,0 +1,32 @@
+<configuration>
+
+    <!-- Request/Response Logging File -->
+    <appender name="REQUEST_RESPONSE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/request_response.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Application Log File -->
+    <appender name="APPLICATION_LOG" class="ch.qos.logback.core.FileAppender">
+        <file>logs/application.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Separate Loggers -->
+    <logger name="com.maybank.apiservice.logging" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE"/>
+    </logger>
+
+    <logger name="com.maybank.apiservice.controller" level="INFO">
+        <appender-ref ref="APPLICATION_LOG"/>
+    </logger>
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="APPLICATION_LOG"/>
+    </root>
+</configuration>
