@@ -9,6 +9,8 @@ import com.maybank.apiservice.repository.AccountRepository;
 import com.maybank.apiservice.repository.TransactionRepository;
 import com.maybank.apiservice.service.TransactionService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +22,15 @@ import java.math.BigDecimal;
 @Service
 @RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
+    private static final Logger logger = LoggerFactory.getLogger(TransactionServiceImpl.class);
+
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
 
     @Override
     @Transactional
     public Transaction createTransaction(TransactionRequest request) {
+        logger.info("Processing transaction for request: {}", request);
         Account account = accountRepository.findById(request.getAccountId())
                 .orElseThrow(() -> new PaymentException(AppStatus.APP_ERROR.getCode(), "Account not found"));
 
