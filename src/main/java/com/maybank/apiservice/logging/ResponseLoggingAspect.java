@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @RequiredArgsConstructor
-public class RequestResponseLoggingAspect {
-    private static final Logger logger = LoggerFactory.getLogger(RequestResponseLoggingAspect.class);
+public class ResponseLoggingAspect {
+    private static final Logger logger = LoggerFactory.getLogger(ResponseLoggingAspect.class);
     private final ObjectMapper objectMapper;
 
     @Around("execution(* com.maybank.apiservice.controller.*.*(..))")
